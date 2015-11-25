@@ -76,7 +76,7 @@ Rails.application.routes.draw do
   resources :attachments
 
   root 'pages#index'
-  # get 'switch_user' => 'switch_user#set_current_user'
-  # get '*path' => redirect('/')
+  get 'switch_user' => 'switch_user#set_current_user'
+  get '*path' => redirect('/')
 
 end
