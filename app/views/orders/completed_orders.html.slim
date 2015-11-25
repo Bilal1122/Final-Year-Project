@@ -23,6 +23,14 @@ br
             td = orders_list.fabric_type
             td = orders_list.created_at.strftime("%a %e %b %l:%M%p")
             td = orders_list.delivery_date
+            td 
+              -if orders_list.image.present?
+                =link_to image_path orders_list.image
+                  =image_tag orders_list.image, target: "_blank",class: "ui tiny image"
+            td 
+              -if orders_list.image1.present?
+                =link_to image_path orders_list.image1
+                  =image_tag orders_list.image1, target: "_blank",class: "ui tiny image"
             td = link_to "View Details", order_path(orders_list.id), method: :post, class: "ui small teal button"
   -else
     h1 No Completed Orders
