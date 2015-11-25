@@ -1,0 +1,52 @@
+h1.centre The Garments Company
+.ui.divider
+.ui.grid.pages
+  .five.wide.center.aligned.column
+		.ui.large.vertical.menu
+			.active.item
+			  .ui.teal.label
+			  .ui.red.label
+			  .ui.green.label
+			  |Navigations
+			.item
+			  i.home.icon
+			  =link_to "HOME", pages_path, class: "ui basic button"
+			.item   
+			  i.man.icon
+			  =link_to "MEN's", for_men_pages_path, class: "ui basic button"
+			.item
+			  i.woman.icon
+			  =link_to "WOMEN's", for_women_pages_path, class: "ui basic button"
+			.item
+			  i.grid.layout.icon
+			  =link_to "About US", about_us_pages_path, class: "ui basic button"
+			.item
+			  i.call.square.icon
+			  =link_to "CONTACT US", contact_us_pages_path, class: "ui basic button"
+			-if current_user.present?
+				.item
+				  i.laptop.icon
+				  =link_to "MIS", home_index_path, class: "ui basic button"
+  .twelve.wide.center.aligned.column
+		h1.centre For Men
+		br
+		.ui.link.cards
+		  - @men_product.each do |products|
+			  .card
+			    .image.page
+						=link_to image_path products.product_image
+						  =image_tag products.product_image, target: "_blank"
+			    .content
+			      .header = products.product_name
+			      .meta = products.gender
+			      .description
+			        = products.description
+			        br
+			        br
+			        b RM 
+			        b = products.price
+			    .extra.content
+			      .left.floated
+			        = products.status
+			      .right.floated
+			        = products.created_at.strftime("%a %e %b %l:%M%p")

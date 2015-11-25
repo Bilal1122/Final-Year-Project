@@ -1,0 +1,105 @@
+h2.centre
+ |HOME
+.ui.bottom.attached.segment.pushable
+  = render 'layouts/menu/home'
+  .pusher.centre-home
+    .ui.basic.segment
+      .ui.header.teal
+        |All Application
+    br
+    .ui.table.teal.home
+    .ui.grid
+      .one.wide.column
+      .four.wide.column
+        -if current_user.role != "Staff"
+          =link_to new_order_orders_path, class: "ui small image"
+            =image_tag('pages/addorder.jpg')
+          br
+          br
+          =link_to " Add New Order", new_order_orders_path, class: "ui basic blue home button"
+          br
+          br
+          br
+          br
+          =link_to new_invoice_invoice_index_path, class: "ui small image"
+            =image_tag('pages/invoice.jpg')
+          br
+          br
+          =link_to "Add New Invoice", new_invoice_invoice_index_path, class: "ui basic green home button"
+          br
+          br
+          br
+          br
+        =link_to all_stock_stock_index_path, class: "ui small image"
+          =image_tag('pages/stock.png')
+        br
+        br
+        =link_to "Add Stock", add_new_stock_index_path, class: "ui basic purple home button"
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+      .three.wide.column
+        =link_to orders_list_orders_path, class: "ui small image"
+          =image_tag('pages/view_orders.png')
+        br
+        br
+        =link_to "View All Order ", orders_list_orders_path, class: "ui basic blue home button "   
+        br
+        br
+        br
+        br
+        -if current_user.role != "Staff"
+          =link_to all_invoices_invoice_index_path, class: "ui small image"
+            =image_tag('pages/invoice_list.png')
+          br
+          br
+          =link_to "View All Invoices", all_invoices_invoice_index_path, class: "ui basic green home button "   
+          br
+          br
+          br
+          br
+        =link_to all_stock_stock_index_path, class: "ui small image"
+          =image_tag('pages/all_stock.jpg')
+        br
+        =link_to "View Stock", all_stock_stock_index_path, class: "ui basic purple home button "  
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+      .one.wide.column
+      .three.wide.column
+        h2 You can also excess extra functionns from here such as:
+        br
+        br
+br
+br
+br
+br
+
+
+    / .ui.grid
+  		/ .one.wide.center.aligned.column
+  	 /  .two.wide.column.center.aligned
+  		/   =link_to "New Order", new_order_orders_path, class: "ui primary button home"
+  	 /  .five.wide.column
+  		/   =link_to "Invoice", new_invoice_invoice_index_path, class: "ui primary button home"
+    /   =link_to "All Order", orders_list_orders_path, class: "ui primary button home"
+    /   br
+    /   br
+    /   =link_to "Stock", all_stock_stock_index_path, class: "ui primary button home"
+    /   br
+    /   br
+    /   =link_to "ALL INVOICES", all_invoices_invoice_index_path, class: "ui primary button home"
+    /   br
+    /   br
+    /   =link_to "Add ", new_gatepass_gatepass_index_path, class: "ui primary button home"

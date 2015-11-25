@@ -1,0 +1,47 @@
+.ui.visible.inverted.left.vertical.sidebar.menu
+  .ui.large.circular.labels
+    .ui.label.teal
+  .item.ui.button
+      = link_to "PROFILE", profile_home_index_path
+  .item
+    |NAVIGATION DRAWER
+  .item
+    i.home.icon
+    = link_to "HOME", home_index_path
+  -if current_user.role == "Admin"
+    .item
+      i.file.icon
+      = link_to "REPORTING", reporting_index_path, target: "_blank"
+    .item
+      i.spy.icon
+      = link_to "ADMIN PANNEL",  'http://localhost:3000/admin', target: "_blank"
+  -if current_user.role == "Staff" || current_user.role == "Admin"
+    .item
+      i.doctor.icon
+      = link_to "APPLY LEAVE", new_leave_application_leave_applications_path
+  -if current_user.role == "Staff"
+    .item
+      i.doctor.icon
+      = link_to "APPLYED LEAVE APPLICATIONS", applied_leaves_leave_applications_path
+    .item
+      i.write.square.icon
+      = link_to "FEEDBACK/MESSAGE", feedback_home_index_path
+  -if current_user.role == "Admin"
+    .item
+      i.doctor.icon
+      = link_to "LEAVE APPLICTIONS", all_leave_applications_leave_applications_path
+      .ui.red.label 
+        = Leave.where(status: "pending").count
+    .item
+      i.file.icon
+      = link_to "ADD GATEPASS", new_gatepass_gatepass_index_path
+    .item
+      i.write.square.icon
+      = link_to "ALL FEEDBACKS", all_feedbacks_home_index_path
+      .ui.green.label 
+        = Feedback.where(status: nil).count
+  .item
+    i.shop.icon
+    = link_to "SHOP", pages_path
+
+    new_gatepass_gatepass_index_path

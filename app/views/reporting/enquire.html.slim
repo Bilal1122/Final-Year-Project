@@ -1,0 +1,23 @@
+= render 'layouts/menu/reporting'
+br
+-if @enquire.present?
+  br
+  h1.centre All Enquires
+  table.ui.definition.table.celled.teal
+    thead
+      tr
+        th Enquire ID
+        th By 
+        th E-Mail
+        th Subject
+        th Message
+        th Created-By
+    tbody
+      -@enquire.each do |enquire|
+        tr
+          td = enquire.id
+          td = enquire.name
+          td = enquire.email
+          td = enquire.subject
+          td = enquire.message
+          td = enquire.created_at.strftime("%a %e %b %l:%M%p")

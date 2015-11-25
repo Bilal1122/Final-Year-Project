@@ -1,0 +1,2 @@
+module ApplicationTaksHelper
+end

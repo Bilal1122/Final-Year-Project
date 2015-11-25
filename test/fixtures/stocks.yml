@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  accessory_name: MyString
+  accessory_quantity: 1
+  accessory_price_per_pcs: 1
+  used_accessory: 1
+  last_updated: 2015-09-22 01:34:20
+  added_by: 1
+  description: MyText
+
+two:
+  accessory_name: MyString
+  accessory_quantity: 1
+  accessory_price_per_pcs: 1
+  used_accessory: 1
+  last_updated: 2015-09-22 01:34:20
+  added_by: 1
+  description: MyText

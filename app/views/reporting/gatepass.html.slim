@@ -1,0 +1,28 @@
+= render 'layouts/menu/reporting'
+br
+.ui.application.buttons
+  = link_to "This Month GatePass", gatepass_reporting_index_path, class: "ui positive button"
+  = link_to "GatePass History", gatepass_history_reporting_index_path, class: "ui button" 
+br
+-if @gatepass.present?
+	br
+	.ui.divider.teal
+	h1.centre This Moth GatePass
+	table.ui.table.teal
+	  thead
+	    tr
+	      th Gate Pass ID
+	      th Person/Company Name
+	      th Delivered PCs
+	      th Total Amount in RM
+	      th Created By
+	      th Created At
+	  tbody
+	    -@gatepass.each do |gatepass|
+	      tr
+	        td = gatepass.id  
+	        td = gatepass.to_who
+	        td = gatepass.delivered_pcs
+	        td = gatepass.total_amount
+	        td = gatepass.made_by
+	        td = gatepass.created_at.strftime("%a %e %b %l:%M%p")

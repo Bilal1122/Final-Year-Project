@@ -1,0 +1,48 @@
+.ui.grid
+  .one.wide.center.aligned.column
+    .ui.menu
+      = link_to home_index_path, class: 'ui small teal button' do
+        i.backward.icon
+        |Back
+  .fourteen.wide.center.aligned.column
+    h1.centre History Leave Application
+br
+.ui.application.buttons
+  = link_to "All Applications", all_leave_applications_leave_applications_path, class: "ui positive button"
+  .or
+  = link_to "Applications History", history_application_leave_applications_path, class: "ui button" 
+br
+br
+-if @history_application.present?
+  table.ui.definition.table.celled
+    thead
+      tr
+        th Appliction Id
+        th Applicatnt name
+        th Applicant ID
+        th Leave From when
+        th Number of days
+        th Subject
+        th Description
+        th Created At
+        th status
+        th Attachment
+        th 
+    tbody
+      -@history_application.each do |history_application|
+        tr
+          td = history_application.id   
+          td = history_application.person_name
+          td = history_application.person_id 
+          td = history_application.from_when.strftime("%a %e %b %l:%M%p") if history_application.from_when.present?
+          td = history_application.number_of_days
+          td = history_application.subject
+          td =history_application.description
+          td = history_application.created_at.strftime("%a %e %b %l:%M%p")
+          td = history_application.status
+          td
+  		      -if history_application.image.present?
+  		        = image_tag history_application.image, class: "ui tiny image"
+          td = link_to "Approve/Reject", leave_application_path(history_application), class: "ui small teal button"
+-else
+  h1.centre No history!

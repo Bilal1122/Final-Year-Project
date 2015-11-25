@@ -1,0 +1,31 @@
+= render 'layouts/menu/reporting'
+br
+.ui.application.buttons
+-if @paid_orders.present?
+  h1.centre All paid Orders
+  table.ui.definition.table.celled.teal
+    thead
+      tr
+        th Order Id
+        th Customer Name
+        th E-Mail
+        th Fabric Type
+        th Created At
+        th Delivery Date
+        th Payment status
+        th 
+        th
+    tbody
+      -@paid_orders.each do |paid_orders_list|
+        tr
+          td = paid_orders_list.id   
+          td = paid_orders_list.customer_name
+          td = paid_orders_list.email 
+          td = paid_orders_list.fabric_type
+          td = paid_orders_list.created_at.strftime("%a %e %b %l:%M%p")
+          td = paid_orders_list.delivery_date
+          td = paid_orders_list.payment_status
+          td = link_to "View Details", order_path(paid_orders_list.id), method: :post, class: "ui small teal button"
+          td = button_to "Delete" , order_path(paid_orders_list), method: :delete, class: "ui small red button"
+-else
+  h1.centre No paid Orders

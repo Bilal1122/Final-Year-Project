@@ -1,0 +1,44 @@
+.ui.grid
+  .one.wide.center.aligned.column
+    .ui.menu
+      = link_to home_index_path, class: 'ui small teal button' do
+        i.backward.icon
+        |Back
+  .fourteen.wide.center.aligned.column
+    h1.centre All Invoice's
+.ui.divider
+br
+.ui.application.buttons
+  = link_to "Current Month", all_invoices_invoice_index_path, class: "ui positive button"
+  .or
+  = link_to "Invoice History", invoice_history_invoice_index_path , class: "ui button" 
+br
+br
+/ .ui.application.buttons
+/   = link_to "Current Month", all_invoices_invoice_index_path, class: "ui  button"
+/   = link_to "Invoice History", invoice_history_invoice_index_path , class: "ui button" 
+/   = link_to "Invoice History", invoice_history_invoice_index_path , class: "ui button" 
+table.ui.table.teal
+  thead
+    tr
+      th Invoice ID
+      th Person Name(To who)
+      th Invoice Type
+      th Description
+      th created At
+      th
+      / th
+  tbody
+    -@all_invoice.each do |all_invoice|
+      tr
+        td = all_invoice.id
+        td = all_invoice.personname
+        td = all_invoice.invoice_type
+        td = all_invoice.description
+        td = all_invoice.created_at.strftime("%a %e %b %l:%M%p")
+        -if current_user.role == "Admin"
+          td = link_to "EDIT", invoice_path(all_invoice), class: "ui small teal button"
+        / td = button_to "DELETE", stock_path(all_invoice),method: :delete, class: "ui small red button"
+br
+br
+br

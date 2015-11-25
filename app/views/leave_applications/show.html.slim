@@ -1,0 +1,30 @@
+.ui.grid
+  .one.wide.center.aligned.column
+    .ui.menu
+      = link_to home_index_path, class: 'ui small teal button' do
+        i.backward.icon
+        |Back
+br
+br
+.profile.card
+  .header
+    = form_for @leave_appliction, url: leave_application_path, method: :patch, :html => {class: 'ui form'} do |f|
+	    .ui.grid
+	      .three.wide.center.aligned.column
+	      .two.wide.column
+	        b
+						|Application ID
+						br
+						|Person Name
+	      .two.wide.column
+					= @leave_appliction.id  
+					br
+					= @leave_appliction.person_name
+	      .two.wide.column 
+        	-if @leave_appliction.image.present?
+				    =link_to image_path @leave_appliction.image
+				      =image_tag @leave_appliction.image, target: "_blank",class: "ui medium image"
+	      .two.wide.column
+		      .field
+			      = f.select(:status, ['Approved', 'Rejected'], { class: "ui fluid normal dropdown", :include_blank => false })
+          =f.submit "UPDATE", class: "ui small teal button"

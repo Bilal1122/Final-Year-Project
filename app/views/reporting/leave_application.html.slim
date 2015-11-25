@@ -1,0 +1,37 @@
+= render 'layouts/menu/reporting'
+br
+-if @leave_applictionns.present?
+  h1.centre All Leave Applications
+  table.ui.definition.table.celled
+    thead
+      tr
+        th Appliction Id
+        th Applicatnt name
+        th Applicant ID
+        th Leave From when
+        th Number of days
+        th Subject
+        th Description
+        th Created At
+        th status
+        th Attachment
+        th 
+    tbody
+      -@leave_applictionns.each do |leave_applictionns|
+        tr
+          td = leave_applictionns.id   
+          td = leave_applictionns.person_name
+          td = leave_applictionns.person_id 
+          td = leave_applictionns.from_when.strftime("%a %e %b %l:%M%p")  if leave_applictionns.from_when.present?
+          td = leave_applictionns.number_of_days
+          td = leave_applictionns.subject
+          td =leave_applictionns.description
+          td = leave_applictionns.created_at.strftime("%a %e %b %l:%M%p")
+          td = leave_applictionns.status
+          td
+  		      -if leave_applictionns.image.present?
+              =link_to image_path leave_applictionns.image
+                =image_tag leave_applictionns.image, target: "_blank",class: "ui tiny image"
+          td = link_to "Approve/Reject", leave_application_path(leave_applictionns), class: "ui small teal button"
+-else
+  h1.centre No Applications!

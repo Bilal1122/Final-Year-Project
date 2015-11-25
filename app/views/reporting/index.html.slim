@@ -1,0 +1,29 @@
+= render 'layouts/menu/reporting'
+.centre
+	h1 STATS
+	.ui.divider
+br
+br
+br
+.ui.grid
+  .one.wide.center.aligned.column
+  .eight.wide.center.aligned.column
+    h1.teal This Month Profit
+    h1 = Order.where("created_at >= ? AND created_at <= ?", Time.zone.now.beginning_of_month, Time.zone.now.end_of_month).count
+    |RM
+  .four.wide.center.aligned.column
+    h1.teal This Month Expenses
+    h1 = Order.count 
+    |RM
+br
+.ui.divider
+br
+.ui.grid
+  .one.wide.center.aligned.column
+  .eight.wide.center.aligned.column
+    h1.teal This Moth Orders
+    h1 = Order.where("created_at >= ? AND created_at <= ?", Time.zone.now.beginning_of_month, Time.zone.now.end_of_month).count
+  .three.wide.center.aligned.column
+    h1.teal All Orders
+    h1 = Order.count
+

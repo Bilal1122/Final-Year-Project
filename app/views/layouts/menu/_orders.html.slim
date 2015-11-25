@@ -1,0 +1,19 @@
+.ui.pointing.menu.center
+  .item
+    =link_to "Back", home_index_path,class: "ui small teal button"
+  .item
+    =link_to "Pending Orders", orders_list_orders_path,class: "ui basic teal button"
+    .floating.bottom.ui.red.label 
+      = Order.where(order_status: "pending").count
+  .item
+    =link_to "In Progress Orders", in_progress_orders_orders_path,class: "ui basic teal button"
+    .floating.bottom.ui.red.label 
+      = Order.where(order_status: "in_progress").count
+  .item
+    =link_to "Completed Orders", completed_orders_orders_path,class: "ui basic teal button"
+    .floating.bottom.ui.teal.label 
+      = Order.where(order_status: "completed").count
+  .item
+    =link_to "Delivered Orders", delivered_orders_orders_path,class: "ui basic teal button"
+    .floating.bottom.ui.green.label 
+      = Order.where(order_status: "delivered").count

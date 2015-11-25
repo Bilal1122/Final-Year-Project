@@ -1,0 +1,184 @@
+@import "semantic-ui";
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require jquery-ui
+ *= require semantic-ui
+ *= require pickadate/lib/themes/classic
+ *= require pickadate/lib/themes/classic.date
+ *= require pickadate/lib/themes/classic.time
+ *= require_tree .
+ *= require_self
+ */
+
+.ui.circular.labels .label, .ui.circular.label {
+    min-width: 5em;
+    min-height: 5em;
+    padding: 0.5em !important;
+    line-height: 1em;
+    text-align: center;
+    border-radius: 500rem;
+    margin-left: 95px;
+    margin-top: 14px;
+}
+
+.centered{
+  text-align: center;
+}
+
+.ui.segment[class*="bottom attached"]:last-child {
+    margin-bottom: 8em;
+}
+
+.centre {
+	text-align: center;
+}
+.ui.header:last-child {
+    margin-bottom: 0em;
+    margin-right: 450px;
+    text-align: center;
+}
+.image{
+  img{
+		max-width: 200px;
+		margin-left: 68px;
+  }
+}
+.image_size{
+  margin: auto;
+  text-align: center;
+  padding-top: 10px;
+  font-size: 18px;
+  margin-left: 10px;
+}
+.ui.primary.buttons.home .button, .ui.primary.button {
+  background-color: #2185D0;
+  color: #FFF;
+  text-shadow: none;
+  background-image: none;
+  margin-right: 748px;
+}
+.ui.segment {
+  margin: 0rem 18em;
+}
+
+.ui.basis.home.buttons .button, .ui.basis.button {
+  background-color: #2185D0;
+  color: #FFF;
+  text-shadow: none;
+  background-image: none;
+  margin-right: 737px;
+  margin-left: 104px;
+}
+
+.ui.home.button {
+  cursor: pointer;
+  display: inline-block;
+  min-height: 1em;
+  outline: medium none;
+  border: medium none;
+  vertical-align: baseline;
+  background: #E0E1E2 none repeat scroll 0% 0%;
+  color: rgba(0, 0, 0, 0.6);
+  font-family: "Lato","Helvetica Neue",Arial,Helvetica,sans-serif;
+  margin: 0em -0.75em 0em 5em;
+}
+
+.ui.application.buttons {
+  display: inline-flex;
+  flex-direction: row;
+  font-size: 0em;
+  vertical-align: baseline;
+  margin: 0em 4.25em 4em 8em;
+  margin-left: 500px;
+}
+.ui.table.home {
+  width: 100%;
+  background: #FFF none repeat scroll 0% 0%;
+  margin: 1em 7em;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  box-shadow: none;
+  border-radius: 0.285714rem;
+  text-align: left;
+  color: rgba(0, 0, 0, 0.87);
+  border-collapse: separate;
+  border-spacing: 0px;
+  margin-right: 7em;
+}
+
+.image.page img {
+  max-width: auto;
+  margin-left: 2px;
+}
+
+.ui.grid.pages > .column:not(.row), .ui.grid > .row > .column {
+  position: relative;
+  display: inline-block;
+  width: 6.25%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  vertical-align: top;
+  margin-right: -120px;
+}
+
+.ui.cards > .card {
+  display: flex;
+  margin: 0.875em 27px 0.875em 0.5em;
+  float: none;
+}
+
+.small_block {
+  background-color: #383838; 
+  height: initial;
+  text-align: centre;
+  apple-text-fill-color: white;
+  margin-left: 450px;
+  margin-right: 450px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.block {
+  background-color: #383838; 
+  height: initial;
+  text-align: centre;
+  apple-text-fill-color: white;
+  margin-left: 150px;
+  margin-right: 550px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.ui.circular.labels.profile .label, .ui.circular.label {
+  min-width: 10em;
+  min-height: 10em;
+  padding: 0.5em !important;
+  line-height: 1em;
+  text-align: center;
+  border-radius: 500rem;
+  margin-left: 150px;
+  margin-top: 14px;
+}
+
+.white{
+  color: white;
+}
+
+.ui.application.buttons {
+  display: inline-flex;
+  flex-direction: row;
+  font-size: 0em;
+  vertical-align: baseline;
+  margin: 0em 4.25em 4em 400px;
+  margin-left: 645px;
+}

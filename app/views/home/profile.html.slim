@@ -1,0 +1,29 @@
+h1.centre
+ |PROFILE
+.ui.bottom.attached.segment.pushable
+  = render 'layouts/menu/home'
+  .pusher.centre-home
+    br
+    br
+    .block
+      .ui.white.circular.label.profile
+      br
+      br
+      .ui.grid.centre
+        .four.wide.center.aligned.column   
+        .two.wide.center.aligned.column
+          b.white Name:   
+          br
+          br 
+          b.white E-Mail:
+          br
+          br
+          b.white Role:  
+        .five.wide.center.aligned.column
+          .white= current_user.name
+          br
+          .white = current_user.email
+          br
+          .white =current_user.role
+        .four.wide.column.center.aligned.collapse
+        .five.wide.column

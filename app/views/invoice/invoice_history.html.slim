@@ -1,0 +1,36 @@
+.ui.grid
+  .one.wide.center.aligned.column
+    .ui.menu
+      = link_to home_index_path, class: 'ui small teal button' do
+        i.backward.icon
+        |Back
+  .fourteen.wide.center.aligned.column
+    h1.centre Invoice's History
+.ui.divider
+br
+.ui.application.buttons
+  = link_to "Current Month", all_invoices_invoice_index_path, class: "ui positive button"
+  .or
+  = link_to "Invoice History", invoice_history_invoice_index_path , class: "ui button" 
+table.ui.table.teal
+  thead
+    tr
+      th Invoice ID
+      th Person Name(To who)
+      th Invoice Type
+      th Description
+      th created At
+      th
+  tbody
+    -@invoice_history.each do |invoice_history|
+      tr
+        td = invoice_history.id
+        td = invoice_history.personname
+        td = invoice_history.invoice_type
+        td = invoice_history.description
+        td = invoice_history.created_at.strftime("%a %e %b %l:%M%p")
+        -if current_user.role == "Admin"
+          td = link_to "EDIT", invoice_path(invoice_history), class: "ui small teal button"
+br
+br
+br

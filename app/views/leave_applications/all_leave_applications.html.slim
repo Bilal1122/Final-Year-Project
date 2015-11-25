@@ -1,0 +1,50 @@
+.ui.grid
+  .one.wide.center.aligned.column
+    .ui.menu
+      = link_to home_index_path, class: 'ui small teal button' do
+        i.backward.icon
+        |Back
+  .fourteen.wide.center.aligned.column
+    h1.centre Leave Application
+br
+.ui.application.buttons
+  = link_to "All Applications", all_leave_applications_leave_applications_path, class: "ui positive button"
+  .or
+  = link_to "Applications History", history_application_leave_applications_path, class: "ui button" 
+br
+br
+-if @leave_appliction.present?
+  table.ui.definition.table.celled
+    thead
+      tr
+        th Appliction Id
+        th Applicatnt name
+        th Applicant ID
+        th Leave From when
+        th Number of days
+        th Subject
+        th Description
+        th Created At
+        th status
+        th Attachment
+        th 
+    tbody
+      -@leave_appliction.each do |leave_appliction|
+        tr
+          td = leave_appliction.id   
+          td = leave_appliction.person_name
+          td = leave_appliction.person_id 
+          td = leave_appliction.from_when.strftime("%a %e %b %l:%M%p")  if leave_appliction.from_when.present?
+          td = leave_appliction.number_of_days
+          td = leave_appliction.subject
+          td =leave_appliction.description
+          td = leave_appliction.created_at.strftime("%a %e %b %l:%M%p")
+          td = leave_appliction.status
+          td
+  		      -if leave_appliction.image.present?
+              =link_to image_path leave_appliction.image
+                =image_tag leave_appliction.image, target: "_blank",class: "ui tiny image"
+          / td = button_to "Accept",leave_application_path(leave_appliction), method: :post, class: "ui small teal button"
+          td = link_to "Approve/Reject", leave_application_path(leave_appliction), class: "ui small teal button"
+-else
+  h1.centre No Applications!

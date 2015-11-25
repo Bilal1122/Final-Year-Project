@@ -1,0 +1,48 @@
+.ui.grid
+  .one.wide.center.aligned.column
+    .ui.menu
+      = link_to home_index_path, class: 'ui small teal button' do
+        i.backward.icon
+        |Back
+  .fourteen.wide.center.aligned.column
+    h1.centre GATEPASS
+.ui.divider
+.ui.segment.teal
+  br
+  = form_for @new_gatepass,  url: gatepass_index_path, :html => {class: 'ui form'} do |f|
+    h1.centre ADD NEW GatePass
+    br
+    .centre
+	    b
+	      |Today's Date:
+	    br
+		  = Time.now.strftime("%a %e %b %l:%M%p")
+	    br
+    .two.fields
+      .field
+  	    .ui.lable 
+  	        b
+	  	        |Order Id*
+  		    = f.text_field :order_id, required: true
+      .field
+  	    .ui.lable
+  	        b
+	  	        |Name (Person/Company)*
+  		    = f.text_field :to_who, required: true
+  	.two.fields
+      .field
+  	    .ui.lable
+  	        b
+	  	        |Pcs Quntity*
+  		    = f.text_field :delivered_pcs, required: true
+  	.two.fields
+      .field
+  	    .ui.lable
+  	        b
+	  	        |Total abount*
+  		    = f.text_field :total_amount, required: true
+  		br
+  	.centre
+	  	= f.submit "ADD", class: "ui small teal button"   
+br
+br

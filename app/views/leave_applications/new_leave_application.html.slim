@@ -1,0 +1,54 @@
+.ui.grid
+  .one.wide.center.aligned.column
+    .ui.menu
+      = link_to home_index_path, class: 'ui small teal button' do
+        i.backward.icon
+        |Back
+  .fourteen.wide.center.aligned.column
+    h1.centre Leave Application
+.ui.divider
+.ui.segment.teal
+  br
+  = form_for @new_leave_application, url:  leave_applications_path, :html => {class: 'ui form'} do |f|
+    h1.centre Apply For Leave 
+    br
+    b
+      |Today's Date:
+    br
+	  = Time.now.strftime("%a %e %b %l:%M%p")
+    br
+    .two.fields
+      .field
+  	    .ui.lable 
+  	        b
+	  	        |From what Date?(required)*
+  		    = f.text_field :from_when, required: :true
+      .field
+  	    .ui.lable
+  	        b
+	  	        |How Many Days?(required)*
+  		    = f.text_field :number_of_days, required: :true
+  	.two.fields
+      .field
+  	    .ui.lable
+  	        b
+	  	        |Subject:(required)*
+  		    = f.text_field :subject, required: :true
+  	.one.field.centre
+      .field
+  	    .ui.lable
+  	        b
+	  	        |Wrire Details Below:(required)*
+  		    = f.text_area :description, required: :true
+    .field
+      br
+      br
+      .ui.lable
+          b Attach MC or Any Doctor Description(required)*
+          br
+          = f.file_field :image, required: :true
+    br
+  	.centre
+	  	= f.submit "ADD", class: "ui small teal button"   
+br
+br

@@ -1,0 +1,29 @@
+br
+= render 'layouts/menu/orders'
+.centre
+  -if @delivered_orders_list.present?
+    h1 Delivered Orders List
+    br
+    table.ui.table.teal
+      thead
+        tr
+          th Order Id
+          th Customer Name
+          th E-Mail
+          th Fabric Type
+          th Created At
+          th Delivery Date
+          th 
+      tbody
+        -@delivered_orders_list.each do |orders_list|
+          tr
+            td = orders_list.id   
+            td = orders_list.customer_name
+            td = orders_list.email 
+            td = orders_list.fabric_type
+            td = orders_list.created_at.strftime("%a %e %b %l:%M%p")
+            td = orders_list.delivery_date
+            -if current_user.role == "Admin"
+              td = link_to "View Details", order_path(orders_list.id), method: :post, class: "ui small teal button"
+  -else
+    h1.teal No Delivered Orders!

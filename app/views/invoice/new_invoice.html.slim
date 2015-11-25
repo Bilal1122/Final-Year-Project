@@ -1,0 +1,44 @@
+.ui.grid
+  .one.wide.center.aligned.column
+    .ui.menu
+      = link_to home_index_path, class: 'ui small teal button' do
+        i.backward.icon
+        |Back
+  .fourteen.wide.center.aligned.column
+    h1.centre INVOICE
+.ui.divider
+.ui.segment.teal
+  br
+  = form_for @invoice,  url: invoice_index_path, :html => {class: 'ui form'} do |f|
+    h1.centre ADD NEW INVOICE
+    br
+    .two.fields
+      .field
+  	    .ui.lable
+  	        |Name (To Who)*
+  		    = f.text_field :personname, required: true
+      .field
+        br
+        = f.select(:invoice_type, ['sales', 'Expense', 'payrols'], { class: "ui fluid normal dropdown", :include_blank => "Select Invoice Type" })
+  	.two.fields
+      .field
+  	    .ui.lable
+  	        |Amount (in words and numbers)*
+  		    = f.text_field :amount, required: true
+  	.fields
+      .field
+  	    .ui.lable
+  	        |Add Description
+  		    = f.text_area :description
+      .field
+        br
+        br
+        .ui.lable
+            |Add Attachment 1
+            br
+            = f.file_field :image
+  		br
+  	.centre
+	  	= f.submit "ADD", class: "ui small teal button"   
+br
+br

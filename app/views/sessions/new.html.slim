@@ -1,0 +1,15 @@
+h1.centre Log In Form
+.small_block
+  br
+	.ui.form.white
+		= form_tag sessions_path do 
+			.teal
+			  = label_tag :email
+			  = text_field_tag :email, params[:email], required: true
+			  br
+			  br
+			  = label_tag :password_hash
+			  = password_field_tag :password_hash, params[:password_hash], required: true
+			  </p>
+			  .centre
+				  = submit_tag "Log in", class: "ui small teal button"

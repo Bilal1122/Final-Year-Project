@@ -1,0 +1,34 @@
+= render 'layouts/menu/reporting'
+br
+.ui.application.buttons
+  = link_to "This Month Orders",  orders_reporting_index_path, class: "ui positive button"
+  = link_to "Orders History", orders_history_reporting_index_path, class: "ui button" 
+br
+br
+-if @orders_history.present?
+  h1.centre Orders History
+  br
+  table.ui.definition.table.celled.teal
+    thead
+      tr
+        th Order Id
+        th Customer Name
+        th E-Mail
+        th Fabric Type
+        th Created At
+        th Delivery Date
+        th 
+        th
+    tbody
+      -@orders_history.each do |orders_history_list|
+        tr
+          td = orders_history_list.id   
+          td = orders_history_list.customer_name
+          td = orders_history_list.email 
+          td = orders_history_list.fabric_type
+          td = orders_history_list.created_at.strftime("%a %e %b %l:%M%p")
+          td = orders_history_list.delivery_date
+          td = link_to "View Details", order_path(orders_history_list.id), method: :post, class: "ui small teal button"
+          td = button_to "Delete" , order_path(orders_history_list), method: :delete, class: "ui small red button"
+-else
+  h1 No orders In Progress

@@ -1,0 +1,31 @@
+= render 'layouts/menu/reporting'
+br
+.ui.application.buttons
+-if @unpaid_orders.present?
+  h1.centre All unpaid unpaid_orders
+  table.ui.definition.table.celled.teal
+    thead
+      tr
+        th Order Id
+        th Customer Name
+        th E-Mail
+        th Fabric Type
+        th Created At
+        th Delivery Date
+        th Payment status
+        th 
+        th
+    tbody
+      -@unpaid_orders.each do |unpaid_orders_list|
+        tr
+          td = unpaid_orders_list.id   
+          td = unpaid_orders_list.customer_name
+          td = unpaid_orders_list.email 
+          td = unpaid_orders_list.fabric_type
+          td = unpaid_orders_list.created_at.strftime("%a %e %b %l:%M%p")
+          td = unpaid_orders_list.delivery_date
+          td = unpaid_orders_list.payment_status
+          td = link_to "View Details", order_path(unpaid_orders_list.id), method: :post, class: "ui small teal button"
+          td = button_to "Delete" , order_path(unpaid_orders_list), method: :delete, class: "ui small red button"
+-else
+  h1 No orders In Progress

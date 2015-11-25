@@ -1,0 +1,59 @@
+.ui.grid
+  .one.wide.center.aligned.column
+    .ui.menu
+      = link_to home_index_path, class: 'ui small teal button' do
+        i.backward.icon
+        |Back
+  .fourteen.wide.center.aligned.column
+.ui.segment
+  br
+  = form_for @invoice,  url: invoice_path, :html => {class: 'ui form'} do |f|
+    h1.centre Update Invoice
+    br
+    .two.fields
+      .field
+  	    .ui.lable
+  	        b
+  	          |Name (To Who)
+  	        br
+  		    = @invoice.personname
+      .field
+  	    .ui.lable
+  	        b
+	  	        |Invoice Type
+            = f.select(:invoice_type, ['sales', 'Expense', 'payrols'], { class: "ui fluid normal dropdown", :include_blank => "Select Invoice Type" })
+  	.two.fields
+      .field
+  	    .ui.lable 
+  	        b
+	  	        |Amount (in words and numbers)
+  		    = f.text_field :amount
+      .field
+  	    .ui.lable
+  	      br
+  	      b 
+	  	      |Created at
+  	      br
+  	      b
+	  	      = @invoice.created_at.strftime("%a %e %b %l:%M%p")
+  	.two.fields
+      br
+      br
+      .field
+  	    .ui.lable
+  	        b
+	  	        |Add Description
+  		    = f.text_area :description
+      .field
+        -if @invoice.image.present?
+          br
+            b Image Attachment
+          =link_to image_path @invoice.image, class: "ui small image"
+            =image_tag @invoice.image, class: "ui small image", target: "_blank"
+    br
+    .centre
+      = f.submit "Update Invoice", class: "ui small teal button"
+    br
+br
+br
+br

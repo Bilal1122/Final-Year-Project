@@ -1,0 +1,40 @@
+.ui.grid
+  .one.wide.center.aligned.column
+    .ui.menu
+      = link_to home_index_path, class: 'ui small teal button' do
+        i.backward.icon
+        |Back
+  .fourteen.wide.center.aligned.column
+    h1.centre STOCK
+.ui.divider
+.ui.modal
+  i.close.icon
+  .header
+    |what
+.ui.segment
+  br
+  = form_for @stock,  url: stock_index_path, :html => {class: 'ui form'} do |f|
+    h1.centre ADD STOCK
+    br
+    .two.fields
+      .field
+  	    .ui.lable
+  	        |Accessory Name*
+  		    = f.text_field :accessory_name, required: true
+      .field
+  	    .ui.lable
+  	        |Acessory Quantity*
+  		    = f.text_field :accessory_quantity, required: true
+  	.two.fields
+      .field
+  	    .ui.lable
+  	        |Accessory Price Per-Piece*
+  		    = f.text_field :accessory_price_per_pcs, required: true
+  		.field
+      .field
+  	    .ui.lable
+  	        |Description*
+  		    = f.text_area :description, required: true
+  		br
+  	.centre
+	  	= f.submit "ADD", class: "ui small teal button"  

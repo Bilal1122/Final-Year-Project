@@ -1,0 +1,31 @@
+.ui.grid
+  .one.wide.center.aligned.column
+    .ui.menu
+      = link_to home_index_path, class: 'ui small teal button' do
+        i.backward.icon
+        |Back
+  .fourteen.wide.center.aligned.column
+    h1.centre ALL STOCK
+.ui.divider
+table.ui.table.teal
+  thead
+    tr
+      th Stock ID
+      th Accessory Name
+      th Accessory Quantity
+      th Accessory Price Per-Piece
+      th Description
+      th Used Quantity
+      th
+      th
+  tbody
+    -@all_stock.each do |all_stock|
+      tr
+        td = all_stock.id
+        td = all_stock.accessory_name
+        td = all_stock.accessory_quantity
+        td = all_stock.accessory_price_per_pcs
+        td = all_stock.description
+        td = all_stock.used_accessory
+        td = link_to "EDIT", stock_path(all_stock), class: "ui small teal button"
+        td = button_to "DELETE", stock_path(all_stock),method: :delete, class: "ui small red button"

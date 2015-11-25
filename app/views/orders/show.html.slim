@@ -1,0 +1,346 @@
+br
+.ui.grid
+  .one.wide.center.aligned.column
+    .ui.menu
+      = link_to orders_list_orders_path, class: 'ui small teal button' do
+        i.backward.icon
+        |Back
+  .fourteen.wide.center.aligned.column
+    h1.centre ORDER
+.ui.divider
+h1.centre Order Details
+h1.centre.red ="Order ID: #{@order.id}"
+-if current_user.role == "Admin"
+	br
+	br
+	.ui.segment
+	  br
+	  = form_for @order, url: order_path, method: :patch, :html => {class: 'ui form'} do |f|
+	    .ui.inverted.form
+		    .three.fields
+		      .field
+		  	    .ui.lable
+		  	        |Customer Name
+		  		    = f.text_field :customer_name
+		      .field
+		  	    .ui.lable
+		  	        |Customer E-Mail
+		  		    = f.text_field :email
+		      .field
+		  	    .ui.lable
+		  	        |Customer Phn Number
+		  		    = f.text_field :phn_number
+		    .two.fields
+		      .field
+		  	    .ui.lable
+		  	        |Customer NRIC
+		  		    = f.text_field :nric
+		      .field
+		  	    .ui.lable
+		  	        |Company Name
+		  		    = f.text_field :company_name
+		    .two.fields
+		      .field
+		  	    .ui.lable
+		  	        |Address
+		  		    = f.text_area :address
+		    .three.fields
+		      .field
+		  	    .ui.lable
+		  	        |Total Quantity
+		  		    = f.text_field :quantity
+		      .field
+		  	    .ui.lable
+		  	        |Sizing (Ratio)
+		  		    = f.text_field :sizing
+		      .field
+		  	    .ui.lable
+		  	        |Fabric Type
+		  		    = f.text_field :fabric_type
+		    .two.fields
+		      .field
+		  	    .ui.lable
+		  	        |Delivery Date
+		  		    = f.text_field :delivery_date
+		      .field
+		  	    .ui.lable
+		  	        |Current Date
+		  	        br
+		  		    = Time.now
+		    .four.fields
+		      .field
+		  	    .ui.lable
+		  	        |Price Per Piece (RM)
+		  		    = f.text_field :price_per_piece
+		      .field
+		        br
+			      = f.select(:order_status, ['in_progress', 'completed', 'delivered'], { class: "ui fluid normal dropdown", :include_blank => false })
+		      .field
+		  	    .ui.lable
+		  	      b Current Date
+			      = f.select(:payment_status, ['paid', 'unpaid'], { class: "ui fluid normal dropdown", :include_blank => false })
+		    .ui.lable
+		  	  |Extra note of order
+		  	  = f.text_area :extra_note
+		  	br
+		    .ui.lable
+		  	  |write description of order (staff or admin)
+		  	  = f.text_area :description
+		  	br
+		    .two.fields
+		      .field
+		  	    .ui.lable
+		  	        |Add Attachment 1
+		  	        br
+		  		    = f.file_field :image
+		      .field
+		  	    .ui.lable
+		  	        |Add Attachment 2
+		  	        br
+		  		    = f.file_field :image1
+		  	.ui.grid
+		  	  -if @order.image.present?
+			      .four.wide.column
+						  br
+						    b Image Attachmen 1
+						    br
+						    br
+							=link_to image_path @order.image, class: "ui small image"
+							  =image_tag @order.image, class: "ui small image", target: "_blank"
+		  	-if @order.image1.present?
+		      .four.wide.column
+					  br
+					    b Image Attachmen 2
+					    br
+					    br
+						=link_to image_path @order.image1, class: "ui small image"
+						  =image_tag @order.image1, class: "ui small image", target: "_blank"
+		  	br
+		  	br
+		  	.centre
+	    	  = f.submit "UPDATE", class: "ui small teal button"
+-else
+	br
+	.ui.inverted.segment
+	  br
+	  = form_for @order, url: order_path, method: :patch, :html => {class: 'ui form'} do |f|
+	    .ui.inverted.form
+		    .three.fields
+		      .field
+		  	    .ui.lable
+		  	        b Customer Name
+		  	        br
+		  		    = @order.customer_name
+		      .field
+		  	    .ui.lable
+		  	        b Customer E-Mail
+		  	        br
+		  		    = @order.email
+		      .field
+		  	    .ui.lable
+		  	        b Customer Phn Number
+		  	        br
+		  		    = @order.phn_number
+		    .three.fields
+		      .field
+		  	    .ui.lable
+		  	        b Customer NRIC
+		  	        br
+		  		    = @order.nric
+		      .field
+		  	    .ui.lable
+		  	        b Company Name
+		  	        br
+		  		    = @order.company_name
+		    .two.fields
+		      .field
+		  	    .ui.lable
+		  	        b Address
+		  	        br
+		  		    = @order.address
+		    .three.fields
+		      .field
+		  	    .ui.lable
+		  	        b Total Quantity
+		  	        br
+		  		    = @order.quantity
+		      .field
+		  	    .ui.lable
+		  	        b Sizing (Ratio)
+		  	        br
+		  		    = @order.sizing
+		      .field
+		  	    .ui.lable
+		  	        b Fabric Type
+		  	        br
+		  		    = @order.fabric_type
+		    .three.fields
+		      .field
+		  	    .ui.lable
+		  	        b Delivery Date
+		  	        br
+		  		    = @order.delivery_date
+		      .field
+		  	    .ui.lable
+		  	        b Current Date
+		  	        br
+		  		    = Time.now
+		    .three.fields
+		      .field
+		  	    .ui.lable
+		  	        b Price Per Piece (RM)
+		  	        br
+		  		    = @order.price_per_piece
+		    .ui.lable
+		  	  b Order Note
+		  	  br
+		  	  = @order.extra_note
+		  	br
+		      .field
+			      = f.select(:order_status, ['in_progress', 'completed', 'delivered'], { class: "ui fluid normal dropdown", :include_blank => false })
+		    .ui.lable
+		  	  |Write description (by staff)
+		  	  = f.text_area :description
+		  	.ui.grid
+		  	  -if @order.image.present?
+			      .four.wide.column
+						  br
+						    b Image Attachmen 1
+						    br
+						    br
+							=link_to image_path @order.image, class: "ui small image"
+							  =image_tag @order.image, class: "ui small image", target: "_blank"
+		  	  -if @order.image1.present?
+			      .four.wide.column
+						  br
+						    b Image Attachmen 2
+						    br
+						    br
+							=link_to image_path @order.image1, class: "ui small image"
+							  =image_tag @order.image1, class: "ui small image", target: "_blank"
+		  	br
+		  	br
+		  	.centre
+	    	  = f.submit "UPDATE", class: "ui small teal button"
+br
+br
+/ .profile.card
+/   .header
+/     = form_for @order, url: order_path, method: :patch, :html => {class: 'ui form'} do |f|
+/ 	    .ui.grid
+/ 	      .three.wide.center.aligned.column
+/ 	      .two.wide.column
+/ 	        b
+/ 						|ID
+/ 						br
+/ 						|Customer Name
+/ 						br
+/ 						|Phn Number
+/ 						br
+/ 						|NRIC
+/ 						br
+/ 						|Company Name
+/ 						br
+/ 						|Fabric Type
+/ 						br
+/ 						|Order Quantity
+/ 						br
+/ 						|Order Sizing
+/ 						br
+/ 						|Order Date
+/ 						br
+/ 						|Delivery Date
+/ 						br
+/ 						|Order Status
+/ 						br
+/ 						|Extra Details
+/ 						br
+/ 						|Created By ID
+/ 						br
+/ 						|Created By Name
+/ 						-if current_user.role == "Admin"
+/ 							br
+/ 							|Price Per Piece
+/ 						br
+
+/ 	      .three.wide.column
+/ 					= @order.id 
+/ 					br
+/ 					= @order.customer_name
+/ 					br
+/ 					= @order.phn_number
+/ 					br
+/ 					= @order.nric 
+/ 					br
+/ 					= @order.company_name
+/ 					br
+/ 					= @order.fabric_type
+/ 					br
+/ 					=@order.quantity
+/ 					br
+/ 					=@order.sizing 
+/ 					br 
+/ 					=@order.created_at.strftime("%a %e %b %l:%M%p")
+/ 					br
+/ 					=@order.delivery_date
+/ 					br
+/ 					=@order.order_status
+/ 					br
+/ 					=@order.extra_note
+/ 					br
+/ 					=@order.created_by_id
+/ 					br
+/ 					=@order.created_by_name
+/ 					-if current_user.role == "Admin"
+/ 						br
+/ 						=@order.price_per_piece
+/ 					br
+
+/ 	      .three.wide.column
+/ 	        br
+/ 				  =f.text_field :order_status, id: 'order_status'
+/ 				  br
+/ 				  br
+/ 				  .label
+/ 				    b Add resons of any condition of order *order is delay due to*
+/ 				  =f.text_area :description
+/ 				  br
+/ 				  br
+/ 				  =f.submit "UPDATE", class: "ui small teal button"
+/ 	      .three.wide.column
+/ 				  br
+/ 				    b Image Attachmen
+/ 				    br
+/ 				    br
+/ 					=link_to image_path @order.image, class: "ui small image"
+/ 					  =image_tag @order.image, class: "ui small image", target: "_blank"
+-if @gatepass.present?
+	br
+	.ui.divider.teal
+	h1.centre INVOICE's
+	table.ui.table.teal
+	  thead
+	    tr
+	      th Gate Pass ID
+	      th Person/Company Name
+	      th Delivered PCs
+	      th Total Amount in RM
+	      th Created By
+	      th Created At
+	  tbody
+	    -@gatepass.each do |gatepass|
+	      tr
+	        td = gatepass.id  
+	        td = gatepass.to_who
+	        td = gatepass.delivered_pcs
+	        td = gatepass.total_amount
+	        td = gatepass.made_by
+	        td = gatepass.created_at.strftime("%a %e %b %l:%M%p")
+	br
+	br
+	br
+	br
+	br
+
+
+

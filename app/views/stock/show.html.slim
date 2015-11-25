@@ -1,0 +1,65 @@
+h1.centre STOCK
+br
+br
+.profile.card
+  .header
+    = form_for @stock, url: stock_path, method: :patch, :html => {class: 'ui form'} do |f|
+	    .ui.grid
+	      .one.wide.center.aligned.column
+	      .three.wide.column
+	        b
+						|Stock ID
+						br
+						|Accessory Name
+						br
+						|Accessory Quantity
+						br
+						|Accessory Price Per PCS
+						br
+						|Ussed Accessory
+						br
+						|Last Updated
+						br
+						|Added By
+						br
+						|Description(note)
+						br
+						|Created At
+	      .three.wide.column
+					= @stock.id 
+					br
+					= @stock.accessory_name
+					br
+					= @stock.accessory_quantity
+					br
+					= @stock.accessory_price_per_pcs 
+					br
+					= @stock.used_accessory
+					br
+					= @stock.last_updated.strftime("%a %e %b %l:%M%p") if @stock.last_updated.present?
+					br
+					=@stock.added_by
+					br
+					=@stock.description 
+					br
+					=@stock.created_at.strftime("%a %e %b %l:%M%p")
+	      .two.wide.column 
+	        h3.red EDIT
+	        .ui.label
+	          |Add 'NEW' Quantity (numbers only)
+	        =f.text_field :accessory_quantity
+	          |PCS
+	        br
+	        br
+	        .ui.label
+	          |Add Used Quantity (numbers only)
+	        =f.text_field :used_accessory
+	          |PCS
+	        br
+	        br
+	        .ui.label
+	          |Add 'NEW' Price (numbers only)
+	        =f.text_field :accessory_price_per_pcs
+	          |PCS
+	      .two.wide.column
+          =f.submit "UPDATE", class: "ui small teal button"

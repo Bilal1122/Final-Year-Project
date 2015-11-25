@@ -1,0 +1,92 @@
+.ui.grid
+  .one.wide.center.aligned.column
+    .ui.menu
+      = link_to home_index_path, class: 'ui small red button' do
+        i.backward.icon
+        |Back
+  .thirteen.wide.center.aligned.column
+    h1.centre All Orders
+  .two.wide.center.aligned.column
+    .ui.menu
+      = link_to orders_list_orders_path, class: 'ui blue button' do
+        i.list.icon
+        |All orders
+.ui.divider
+.ui.inverted.segment
+  br
+  = form_for @order,  url: orders_path, :html => {:multipart => true} do |f|
+    .ui.inverted.form
+	    .three.fields
+	      .field
+	  	    .ui.lable
+	  	        |Customer Name*
+	  		    = f.text_field :customer_name, required: true
+	      .field
+	  	    .ui.lable
+	  	        |Customer E-Mail
+	  		    = f.text_field :email
+	      .field
+	  	    .ui.lable
+	  	        |Customer Phn Number
+	  		    = f.text_field :phn_number
+	    .two.fields
+	      .field
+	  	    .ui.lable
+	  	        |Customer NRIC
+	  		    = f.text_field :nric
+	      .field
+	  	    .ui.lable
+	  	        |Company Name
+	  		    = f.text_field :company_name
+	    .two.fields
+	      .field
+	  	    .ui.lable
+	  	        |Address
+	  		    = f.text_area :address
+	    .three.fields
+	      .field
+	  	    .ui.lable
+	  	        |Total Quantity*
+	  		    = f.text_field :quantity, required: true
+	      .field
+	  	    .ui.lable
+	  	        |Sizing (Ratio)*
+	  		    = f.text_field :sizing, required: true
+	      .field
+	  	    .ui.lable
+	  	        |Fabric Type*
+	  		    = f.text_field :fabric_type, required: true
+	    .two.fields
+	      .field
+	  	    .ui.lable
+	  	        |Delivery Date*
+	  		    = f.text_field :delivery_date, required: true
+	      .field
+	  	    .ui.lable
+	  	        |Current Date
+	  	        br
+	  		    = Time.now
+	    .two.fields
+	      .field
+	  	    .ui.lable
+	  	        |Price Per Piece (RM)*
+	  		    = f.text_field :price_per_piece, required: true
+	    .ui.lable
+	  	  |Order Description
+	  	  = f.text_area :extra_note
+	  	br
+	    .two.fields
+	      .field
+	  	    .ui.lable
+	  	        |Add Attachment 1
+	  	        br
+	  		    = f.file_field :image
+	      .field
+	  	    .ui.lable
+	  	        |Add Attachment 2
+	  	        br
+	  		    = f.file_field :image1
+	  	br
+	  	.centre
+    	  = f.submit "Add Order", class: "ui small teal button"
+br

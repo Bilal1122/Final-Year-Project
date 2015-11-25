@@ -1,0 +1,33 @@
+h1.centre REPORTING
+.ui.primary.teal.menu 
+  = link_to reporting_index_path, class: 'item' do
+    |Reporting Home
+  = link_to expense_reporting_index_path, class: 'item' do
+    |Expenses
+  = link_to sales_reporting_index_path, class: 'item' do
+    |Sales
+  = link_to payroll_reporting_index_path, class: 'item' do
+    |Payroles
+  = link_to orders_reporting_index_path, class: 'item' do
+    |Orders
+  = link_to paid_orders_reporting_index_path, class: 'item' do
+    |paid Orders
+    .floating.bottom.ui.blue.label 
+      = Order.where(payment_status: "paid").count
+  = link_to unpaid_orders_reporting_index_path, class: 'item' do
+    |Unpaid Orders
+    .floating.bottom.ui.red.label 
+      = Order.where(payment_status: "unpaid").count
+  = link_to gatepass_reporting_index_path, class: 'item teal' do
+    |Gate Pass
+  = link_to invoices_reporting_index_path, class: 'item' do
+    |Invoices
+  = link_to enquire_reporting_index_path, class: 'item' do
+    |Enquires
+  = link_to leave_application_reporting_index_path, class: 'item' do
+    |Leave Applications
+    .floating.bottom.ui.green.label 
+      =Leave.where("created_at >= ? AND created_at <= ?", Time.zone.now.beginning_of_month, Time.zone.now.end_of_month).count
+  .right.menu
+    = link_to home_index_path, class: 'ui black button' do
+      |HOME

@@ -1,0 +1,35 @@
+= render 'layouts/menu/reporting'
+br
+.ui.application.buttons
+  = link_to "This Month", expense_reporting_index_path, class: "ui positive button"
+  = link_to "Expenses History", expenses_history_reporting_index_path, class: "ui button" 
+br
+br
+-if @expenses_history.present?
+  h1.centre Expenses History
+  table.ui.definition.table.celled.teal
+    thead
+      tr
+        th Invoice ID
+        th Person Name(To who)
+        th Invoice Type
+        th Description
+        th Created at
+        th Amount
+        th
+    tbody
+      -@expenses_history.each do |expenses_history|
+        tr
+          td = expenses_history.id
+          td = expenses_history.personname
+          td = expenses_history.invoice_type
+          td = expenses_history.description
+          td = expenses_history.created_at.strftime("%a %e %b %l:%M%p")
+          td = expenses_history.amount
+          -if current_user.role == "Admin"
+            td = link_to "EDIT", invoice_path(expenses_history), class: "ui small teal button"
+  br
+  br
+  br
+-else
+  h1.centre No Invoices!!

@@ -1,0 +1,31 @@
+h2.centre
+ |All FEEDBACKS and MESSAGES
+.ui.bottom.attached.segment.pushable
+  = render 'layouts/menu/home'
+  .pusher.centre-home
+    .ui.grid
+      .two.wide.center.aligned.column
+      .ten.wide.center.aligned.column
+	      br
+	      br
+	      br
+	      br
+		    .ui.cards
+		      - @all_feedbacks.each do |feedback|
+			    .card
+			      .content
+			        br
+			        .header =feedback.subject
+			        .meta =feedback.added_by_name
+			        = feedback.added_by_id
+			        br
+			        b =feedback.feedback
+			        br
+			        br
+			        .meta.right.floated =feedback.created_at.strftime("%a %e %b %l:%M%p")
+			        .extra.content.like
+				        br
+				        br
+				        .ui.two.buttons   
+				          = button_to "SCEEN" , home_path(feedback), method: :update, class: "ui basic green button"
+				          = button_to "DESTROY" , home_path(feedback), method: :delete, class: "ui basic red button"

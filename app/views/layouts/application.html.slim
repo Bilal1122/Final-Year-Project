@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title
+      |Fyp
+  	=stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+  	=stylesheet_link_tag    'index.sass', media: 'all', 'data-turbolinks-track' => true
+  .ui.small.menu
+	  .item
+	    h2 The Garment's Company
+	  -if current_user.present?
+	    .right.menu
+		    .item
+		      = current_user.name
+		    .item
+		      =link_to "Log Out", sessions_path, class: "ui red button"
+	  -else
+		  .right.menu
+		    .item
+		      =link_to "Sign In", new_session_path, class: "ui green button"
+  body
+  = yield

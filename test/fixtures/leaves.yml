@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  person_id: 1
+  person_name: MyString
+  from_when: 2015-10-03 23:58:08
+  number_of_days: MyString
+  subject: MyString
+  description: MyText
+  status: MyString
+
+two:
+  person_id: 1
+  person_name: MyString
+  from_when: 2015-10-03 23:58:08
+  number_of_days: MyString
+  subject: MyString
+  description: MyText
+  status: MyString
