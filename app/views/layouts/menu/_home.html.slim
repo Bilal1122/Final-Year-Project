@@ -14,7 +14,7 @@
       = link_to "REPORTING", reporting_index_path, target: "_blank"
     .item
       i.spy.icon
-      = link_to "ADMIN PANNEL",  'http://localhost:3000/admin', target: "_blank"
+      = link_to "ADMIN PANNEL",  'https://polar-ravine-8486.herokuapp.com/admin/', target: "_blank"
   -if current_user.role == "Staff" || current_user.role == "Admin"
     .item
       i.doctor.icon
