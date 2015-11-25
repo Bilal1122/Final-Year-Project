@@ -31,6 +31,9 @@ gem 'rails_12factor'
 #slim
 gem 'slim'
 
+#image
+gem "mini_magick"
+
 #semantic-ui
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 
