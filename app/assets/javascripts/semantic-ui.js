@@ -1,4 +1,4 @@
-//= require semantic-ui/modules/accordion/application.js
+//= require semantic-ui/modules/accordion.js
 //= require semantic-ui/modules/behavior/api.js 
 //= require semantic-ui/modules/behavior/colorize.js 
 //= require semantic-ui/modules/behavior/form.js 
